@@ -13,6 +13,10 @@ public abstract class Manager {
         return collection;
     }
 
+    public void addToCollection(Assignable item){
+        collection.add(item);
+    }
+
     public int getNumberOfAssignables(){
         return collection.size();
     }

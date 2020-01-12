@@ -16,7 +16,52 @@ public class Election {
         return parties;
     }
 
+    public Party getParty(int listNumber){
+        Party result = null;
+
+        for(Party party : parties){
+            if(party.getListNumber() == listNumber){
+                result = party;
+            }
+        }
+
+        return result;
+    }
+
     public void addParty(Party party){
         parties.add(party);
+    }
+
+    public void addVotes(int amount){
+        while(amount > 0){
+            voteManager.addToCollection(new Vote());
+            amount--;
+        }
+    }
+
+    public void addVotesToParty(Party party, int votes){
+        while(votes > 0){
+            for(Assignable vote : voteManager.getCollection()){
+
+            }
+        }
+    }
+
+    /**
+     * Checks whether a list number is unique.
+     * @param nr    the list number that should be checked.
+     * @return      true if the number is unique, otherwise false.
+     */
+    public boolean isUniqueListNr(int nr){
+        boolean unique = true;
+
+        for(Party party : parties){
+            if(party.getListNumber() == nr){
+                unique = false;
+                break;
+            }
+        }
+
+        return unique;
     }
 }

@@ -1,3 +1,3 @@
 public interface Assignable{
-    public void assign();
+    public void assign(Party party);
 }
