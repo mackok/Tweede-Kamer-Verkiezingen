@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 
 public class SeatManager extends Manager {
+    private static final int amountOfSeats = 150;
     private ArrayList<Seat> remainderSeats;
     private float quota;
 
     public SeatManager(ArrayList<Assignable> seats) {
         super(seats);
+        quota = 0;
     }
 
     public ArrayList<Seat> getRemainderSeats() {
@@ -16,7 +18,8 @@ public class SeatManager extends Manager {
         return remainderSeats.size();
     }
 
-    public float getQuota(){
+    public float getQuota(int totalVotes){
+        calculateQuota(totalVotes);
         return quota;
     }
 
@@ -33,7 +36,7 @@ public class SeatManager extends Manager {
 
     }
 
-    private float calculateQuota(){
-        return 0; //placeholder
+    private void calculateQuota(int totalVotes){
+        quota = totalVotes / amountOfSeats;
     }
 }

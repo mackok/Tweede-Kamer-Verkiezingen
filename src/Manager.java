@@ -17,6 +17,10 @@ public abstract class Manager {
         collection.add(item);
     }
 
+    public void clearCollection(){
+        collection.clear();
+    }
+
     public int getNumberOfAssignables(){
         return collection.size();
     }

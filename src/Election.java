@@ -8,8 +8,8 @@ public class Election {
 
     public Election(){
         parties = new ArrayList<>();
-        seatManager = new SeatManager(new ArrayList<>()); //placeholder parameter
-        voteManager = new VoteManager(new HashSet<>()); //placeholder parameter
+        seatManager = new SeatManager(new ArrayList<>());
+        voteManager = new VoteManager(new HashSet<>());
     }
 
     public ArrayList<Party> getParties() {
@@ -28,6 +28,30 @@ public class Election {
         return result;
     }
 
+    public int getNumberOfPartyVotes(Party party){
+        int i = 0;
+
+        for(Assignable vote : voteManager.getCollection()){
+            if(vote.getParty() == party && vote.getParty() != null){
+                i++;
+            }
+        }
+
+        return i;
+    }
+
+    public float getQuota(){
+        int i = 0;
+
+        for(Assignable vote : voteManager.getCollection()){
+            if(vote.getParty() != null){
+                i++;
+            }
+        }
+
+        return seatManager.getQuota(i);
+    }
+
     public void addParty(Party party){
         parties.add(party);
     }
@@ -39,12 +63,31 @@ public class Election {
         }
     }
 
-    public void addVotesToParty(Party party, int votes){
-        while(votes > 0){
-            for(Assignable vote : voteManager.getCollection()){
+    public void clearVotes(){
+        voteManager.clearCollection();
+    }
 
+    public void addVotesToParty(Party party, int votes){
+        for(Assignable vote : voteManager.getCollection()){
+            if(vote.getParty() == null && votes > 0){
+                vote.assign(party);
+                votes--;
+            }
+            if(votes <= 0){
+                break;
             }
         }
+
+    }
+
+    public int getAmountUnassignedVotes(){
+        int i = 0;
+        for(Assignable vote : voteManager.getCollection()){
+            if(vote.getParty() == null){
+                i++;
+            }
+        }
+        return i;
     }
 
     /**

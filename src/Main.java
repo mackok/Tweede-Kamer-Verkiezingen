@@ -1,6 +1,4 @@
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
 
@@ -17,6 +15,7 @@ public class Main {
             System.out.println("Welcome to the election management system. Please enter a command. Use the command 'help' to get a list of all possible commands.");
             command = scanner.nextLine();
             System.out.println("\n");
+            boolean go = true;
             switch (command.toLowerCase()){
                 case "help":
                     printHelp();
@@ -31,17 +30,41 @@ public class Main {
 
                 case "add votes":
                     int listNr = askListNumber(scanner, election);
-                    boolean go = true;
+                    go = true;
                     while(go){
                         int votes = askAmountOfVotes(scanner, false);
                         if(votes > totalVotes){
                             System.out.println("The amount of votes to assign can't be bigger than the total amount of votes.");
                         }
+                        else if(election.getAmountUnassignedVotes() < votes){
+                            System.out.println("There are not enough total votes left to assign " + votes + " votes to " + election.getParty(listNr).getName() + ", try again.");
+                        }
                         else{
+                            election.addVotesToParty(election.getParty(listNr), votes);
+                            System.out.println("The votes have been successfully added to the party.");
                             go = false;
                         }
                     }
+                    break;
 
+                case "change total votes":
+                    totalVotes = askAmountOfVotes(scanner, true);
+                    election.clearVotes();
+                    election.addVotes(totalVotes);
+                    break;
+
+                case "distribute seats":
+                    go = true;
+                    while(go){
+                        if(election.getAmountUnassignedVotes() == totalVotes){
+                            System.out.println("Please assign at least 1 vote to one of the parties.");
+                        }
+                        else{
+
+                        }
+                    }
+
+                    break;
 
                 case "parties":
                     printParties(election);
@@ -62,7 +85,10 @@ public class Main {
     private static void printHelp(){
         System.out.println("Commands\n" +
                 "===========================================================\n" +
-                "add - Add a new party to the system.\n" +
+                "add party - Add a new party to the system.\n" +
+                "add votes - Assign a number of votes to a party.\n" +
+                "change total votes - Change the total amount of votes that can be assigned.\n" +
+                "distribute seats - Distribute all seats according to the votes.\n" +
                 "parties - Shows a list of all parties.\n" +
                 "quit - Quit the program.\n");
     }
@@ -75,7 +101,8 @@ public class Main {
         else{
             for(Party party : election.getParties()){
                 System.out.println("List Number: " + party.getListNumber() + "\n" +
-                "Name: " + party.getName());
+                "Name: " + party.getName() + "\n" +
+                "Votes: " + election.getNumberOfPartyVotes(party));
                 System.out.println("-----------------------------------------------------------");
             }
         }
