@@ -1,15 +1,13 @@
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class Election {
     private ArrayList<Party> parties;
-    private SeatManager seatManager;
-    private VoteManager voteManager;
+    private static final int amountOfSeats = 150;
+    private double quota;
 
     public Election(){
         parties = new ArrayList<>();
-        seatManager = new SeatManager();
-        voteManager = new VoteManager();
+        quota = 0;
     }
 
     public ArrayList<Party> getParties() {
@@ -30,27 +28,75 @@ public class Election {
     }
 
     public int getNumberOfPartyVotes(Party party){
-        return voteManager.getNumberOfPartyVotes(party);
+        return party.getAmountOfVotes();
+    }
+
+    public int getNumberOfPartySeats(Party party){
+        return party.getAmountOfSeats();
     }
 
     public void addParty(Party party){
         parties.add(party);
     }
 
-    public void addVotes(int amount){
-        voteManager.createVotes(amount);
+    public void addVotesToParty(int listNr, int amount){
+        Party party = getParty(listNr);
+        for(int i = amount; i > 0; i--){
+            party.addVote(new Vote());
+        }
     }
 
-    public void clearVotes(){
-        voteManager.clearCollection();
+    private void addSeatsToParty(Party party, int amount){
+        for(int i = amount; i > 0; i--){
+            party.addSeat(new Seat());
+        }
     }
 
-    public void addVotesToParty(Party party, int votes){
-        voteManager.addAssignableToParty(party, votes);
-
+    public void distributeSeats(){
+        int totalVotes = 0;
+        for(Party party : parties){
+            totalVotes += party.getAmountOfVotes();
+        }
+        calculateQuota(totalVotes);
+        assignSeats();
+        assignRemainderSeats();
     }
 
-    public int getAmountUnassignedVotes(){
-        return voteManager.getAmountUnassignedVotes();
+    private void assignSeats(){
+        for(Party party : parties){
+            int amount = (int)Math.floor(party.getAmountOfVotes() / quota);
+            addSeatsToParty(party, amount);
+        }
+    }
+
+    private void assignRemainderSeats(){
+        int totalSeats = 0;
+        for(Party party : parties){
+            totalSeats += party.getAmountOfSeats();
+        }
+        int amountRemaining = amountOfSeats - totalSeats;
+        for(int i = amountRemaining; i > 0; i--){
+            Party party = getPartyWithMostVotesPerSeat();
+            party.addSeat(new Seat());
+        }
+    }
+
+    private Party getPartyWithMostVotesPerSeat(){
+        Party mostVotesPerSeat = null;
+
+        double mostAmountOfVotesPerSeat = 0;
+        for(Party party : parties){
+            double amountOfVotesPerSeat = party.getAmountOfVotes() / (party.getAmountOfSeats()+1);
+            if(amountOfVotesPerSeat > mostAmountOfVotesPerSeat){
+                mostAmountOfVotesPerSeat = amountOfVotesPerSeat;
+                mostVotesPerSeat = party;
+            }
+        }
+
+        return mostVotesPerSeat;
+    }
+
+    private void calculateQuota(int totalVotes){
+        quota = (double)totalVotes / (double)amountOfSeats;
     }
 }

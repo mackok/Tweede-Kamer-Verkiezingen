@@ -1,3 +1,3 @@
-public class Seat extends Assignable {
+public class Seat {
 
 }

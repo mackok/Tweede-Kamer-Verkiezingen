@@ -1,3 +1,3 @@
-public class Vote extends Assignable{
+public class Vote {
 
 }
