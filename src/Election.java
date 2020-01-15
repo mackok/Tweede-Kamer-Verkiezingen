@@ -8,8 +8,8 @@ public class Election {
 
     public Election(){
         parties = new ArrayList<>();
-        seatManager = new SeatManager(new ArrayList<>());
-        voteManager = new VoteManager(new HashSet<>());
+        seatManager = new SeatManager();
+        voteManager = new VoteManager();
     }
 
     public ArrayList<Party> getParties() {
@@ -17,39 +17,20 @@ public class Election {
     }
 
     public Party getParty(int listNumber){
-        Party result = null;
+        Party result;
 
-        for(Party party : parties){
-            if(party.getListNumber() == listNumber){
-                result = party;
-            }
+        try{
+            result = parties.get(listNumber-1);
+        }
+        catch (IndexOutOfBoundsException e){
+            result = null;
         }
 
         return result;
     }
 
     public int getNumberOfPartyVotes(Party party){
-        int i = 0;
-
-        for(Assignable vote : voteManager.getCollection()){
-            if(vote.getParty() == party && vote.getParty() != null){
-                i++;
-            }
-        }
-
-        return i;
-    }
-
-    public float getQuota(){
-        int i = 0;
-
-        for(Assignable vote : voteManager.getCollection()){
-            if(vote.getParty() != null){
-                i++;
-            }
-        }
-
-        return seatManager.getQuota(i);
+        return voteManager.getNumberOfPartyVotes(party);
     }
 
     public void addParty(Party party){
@@ -57,10 +38,7 @@ public class Election {
     }
 
     public void addVotes(int amount){
-        while(amount > 0){
-            voteManager.addToCollection(new Vote());
-            amount--;
-        }
+        voteManager.createVotes(amount);
     }
 
     public void clearVotes(){
@@ -68,43 +46,11 @@ public class Election {
     }
 
     public void addVotesToParty(Party party, int votes){
-        for(Assignable vote : voteManager.getCollection()){
-            if(vote.getParty() == null && votes > 0){
-                vote.assign(party);
-                votes--;
-            }
-            if(votes <= 0){
-                break;
-            }
-        }
+        voteManager.addAssignableToParty(party, votes);
 
     }
 
     public int getAmountUnassignedVotes(){
-        int i = 0;
-        for(Assignable vote : voteManager.getCollection()){
-            if(vote.getParty() == null){
-                i++;
-            }
-        }
-        return i;
-    }
-
-    /**
-     * Checks whether a list number is unique.
-     * @param nr    the list number that should be checked.
-     * @return      true if the number is unique, otherwise false.
-     */
-    public boolean isUniqueListNr(int nr){
-        boolean unique = true;
-
-        for(Party party : parties){
-            if(party.getListNumber() == nr){
-                unique = false;
-                break;
-            }
-        }
-
-        return unique;
+        return voteManager.getAmountUnassignedVotes();
     }
 }

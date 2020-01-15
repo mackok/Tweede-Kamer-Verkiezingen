@@ -1,15 +1,12 @@
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public abstract class Manager {
-    private Collection<Assignable> collection;
+    private HashSet<Assignable> collection;
 
-    public Manager(Collection<Assignable> collection){
-        this.collection = collection;
-    }
+    public Manager(){ this.collection = new HashSet<>(); }
 
-    protected abstract void distribute();
-
-    public Collection<Assignable> getCollection(){
+    public HashSet<Assignable> getCollection(){
         return collection;
     }
 
@@ -19,6 +16,44 @@ public abstract class Manager {
 
     public void clearCollection(){
         collection.clear();
+    }
+
+    public void addAssignableToParty(Party party, int amount){
+        for(Assignable assignable : getCollection()){
+            if(assignable.getParty() == null && amount > 0){
+                assignable.assign(party);
+                amount--;
+            }
+            if(amount <= 0){
+                break;
+            }
+        }
+    }
+
+    public HashMap<Party,HashSet<Assignable>> getSortedAssignees(){
+        HashSet<Party> parties = new HashSet<>();
+        for(Assignable assignable : getCollection()){
+            if(!parties.contains(assignable.getParty())){
+                parties.add(assignable.getParty());
+            }
+        }
+
+        HashMap<Party, HashSet<Assignable>> sortedVotes = new HashMap<>();
+        for(Party party : parties){
+            sortedVotes.put(party, getPartyAssignees(party));
+        }
+
+        return sortedVotes;
+    }
+
+    protected HashSet<Assignable> getPartyAssignees(Party party){
+        HashSet<Assignable> assignees = new HashSet<>();
+        for(Assignable assignable : getCollection()){
+            if(assignable.getParty() == party){
+                assignees.add(assignable);
+            }
+        }
+        return assignees;
     }
 
     public int getNumberOfAssignables(){
