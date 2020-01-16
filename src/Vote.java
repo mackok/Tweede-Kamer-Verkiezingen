@@ -1,3 +1,7 @@
-public class Vote extends Assignable{
+import java.time.LocalDateTime;
 
+class Vote extends DateTimeAssignable {
+    Vote(LocalDateTime utcSubmitted) {
+        super(utcSubmitted);
+    }
 }
