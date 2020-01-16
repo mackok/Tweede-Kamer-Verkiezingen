@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class AddVoteCommand extends ResponseCommand<HashMap<String, Integer>> {
+public class AddVoteCommand extends AddCommand<HashMap<String, Integer>> {
     AddVoteCommand(Scanner scanner, Election election) {
         super(scanner, election);
     }

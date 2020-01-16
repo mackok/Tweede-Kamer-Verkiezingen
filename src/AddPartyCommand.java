@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class AddPartyCommand extends ResponseCommand<String>{
+public class AddPartyCommand extends AddCommand<String> {
     AddPartyCommand(Scanner scanner, Election election) {
         super(scanner, election);
     }

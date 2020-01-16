@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-abstract class ResponseCommand<T> implements ICommand{
+abstract class AddCommand<T> implements ICommand{
     Scanner scanner;
     Election election;
 
-    ResponseCommand(Scanner scanner, Election election){
+    AddCommand(Scanner scanner, Election election){
         this.scanner = scanner;
         this.election = election;
     }

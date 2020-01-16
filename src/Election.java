@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Election {
@@ -5,7 +6,7 @@ public class Election {
     private static final int amountOfSeats = 150;
     private double quota;
 
-    public Election(){
+    Election(){
         parties = new ArrayList<>();
         quota = 0;
     }
@@ -27,14 +28,6 @@ public class Election {
         return result;
     }
 
-    public int getNumberOfPartyVotes(Party party){
-        return party.getAmountOfVotes();
-    }
-
-    public int getNumberOfPartySeats(Party party){
-        return party.getAmountOfSeats();
-    }
-
     public void addParty(Party party){
         parties.add(party);
     }
@@ -42,13 +35,13 @@ public class Election {
     public void addVotesToParty(int listNr, int amount){
         Party party = getParty(listNr);
         for(int i = amount; i > 0; i--){
-            party.addVote(new Vote());
+            party.addVote(new Vote(LocalDateTime.now()));
         }
     }
 
     private void addSeatsToParty(Party party, int amount){
         for(int i = amount; i > 0; i--){
-            party.addSeat(new Seat());
+            party.addSeat(new Seat(LocalDateTime.now()));
         }
     }
 
@@ -77,7 +70,7 @@ public class Election {
         int amountRemaining = amountOfSeats - totalSeats;
         for(int i = amountRemaining; i > 0; i--){
             Party party = getPartyWithMostVotesPerSeat();
-            party.addSeat(new Seat());
+            party.addSeat(new Seat(LocalDateTime.now()));
         }
     }
 
