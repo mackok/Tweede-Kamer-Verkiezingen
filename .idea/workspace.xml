@@ -2,29 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d0ee59d-c790-49c8-a8bb-f5f86e259b0e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/Vote.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/tests/AddCommandTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/tests/ElectionTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/tests/InteractionHandlerTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/tests/PartyTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/tests/SeatTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/tests/VoteTest.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Tweede Kamer Verkiezingen.iml" afterPath="$PROJECT_DIR$/Tweede Kamer Verkiezingen.iml" />
-      <change beforePath="$PROJECT_DIR$/src/AddCommand.java" afterPath="$PROJECT_DIR$/src/app/AddCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/AddPartyCommand.java" afterPath="$PROJECT_DIR$/src/app/AddPartyCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/AddVoteCommand.java" afterPath="$PROJECT_DIR$/src/app/AddVoteCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/DateTimeAssignable.java" afterPath="$PROJECT_DIR$/src/app/DateTimeAssignable.java" />
-      <change beforePath="$PROJECT_DIR$/src/DistributeSeatsICommand.java" afterPath="$PROJECT_DIR$/src/app/DistributeSeatsICommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/Election.java" afterPath="$PROJECT_DIR$/src/app/Election.java" />
-      <change beforePath="$PROJECT_DIR$/src/HelpICommand.java" afterPath="$PROJECT_DIR$/src/app/HelpICommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/ICommand.java" afterPath="$PROJECT_DIR$/src/app/ICommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/InteractionHandler.java" afterPath="$PROJECT_DIR$/src/app/InteractionHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/ListPartiesICommand.java" afterPath="$PROJECT_DIR$/src/app/ListPartiesICommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/app/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/Party.java" afterPath="$PROJECT_DIR$/src/app/Party.java" />
-      <change beforePath="$PROJECT_DIR$/src/Seat.java" afterPath="$PROJECT_DIR$/src/app/Seat.java" />
-      <change beforePath="$PROJECT_DIR$/src/Vote.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/app/AddCommand.java" afterPath="$PROJECT_DIR$/src/app/AddCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/AddPartyCommand.java" afterPath="$PROJECT_DIR$/src/app/AddPartyCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/AddVoteCommand.java" afterPath="$PROJECT_DIR$/src/app/AddVoteCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/DateTimeAssignable.java" afterPath="$PROJECT_DIR$/src/app/DateTimeAssignable.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/DistributeSeatsICommand.java" afterPath="$PROJECT_DIR$/src/app/DistributeSeatsICommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/Election.java" afterPath="$PROJECT_DIR$/src/app/Election.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/HelpICommand.java" afterPath="$PROJECT_DIR$/src/app/HelpICommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/ICommand.java" afterPath="$PROJECT_DIR$/src/app/ICommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/InteractionHandler.java" afterPath="$PROJECT_DIR$/src/app/InteractionHandler.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/ListPartiesICommand.java" afterPath="$PROJECT_DIR$/src/app/ListPartiesICommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/Main.java" afterPath="$PROJECT_DIR$/src/app/Main.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/Party.java" afterPath="$PROJECT_DIR$/src/app/Party.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/Seat.java" afterPath="$PROJECT_DIR$/src/app/Seat.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/Vote.java" afterPath="$PROJECT_DIR$/src/app/Vote.java" />
+      <change beforePath="$PROJECT_DIR$/src/tests/AddCommandTest.java" afterPath="$PROJECT_DIR$/src/tests/AddCommandTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/tests/ElectionTest.java" afterPath="$PROJECT_DIR$/src/tests/ElectionTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/tests/InteractionHandlerTest.java" afterPath="$PROJECT_DIR$/src/tests/InteractionHandlerTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/tests/PartyTest.java" afterPath="$PROJECT_DIR$/src/tests/PartyTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/tests/SeatTest.java" afterPath="$PROJECT_DIR$/src/tests/SeatTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/tests/VoteTest.java" afterPath="$PROJECT_DIR$/src/tests/VoteTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -140,7 +137,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1910" />
     <option name="width" value="1940" />
     <option name="height" value="2110" />
@@ -397,7 +394,7 @@
       <workItem from="1578930727694" duration="6609000" />
       <workItem from="1578998996297" duration="11737000" />
       <workItem from="1579103994883" duration="14805000" />
-      <workItem from="1579181531943" duration="14561000" />
+      <workItem from="1579181531943" duration="14980000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented toString()">
       <created>1579182206116</created>
@@ -442,10 +439,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58132000" />
+    <option name="totallyTimeSpent" value="58551000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="3862" height="2122" extended-state="6" />
+    <frame x="-11" y="-11" width="3862" height="2122" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

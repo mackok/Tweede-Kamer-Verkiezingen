@@ -1,7 +1,17 @@
-import java.time.LocalDateTime;
+package app;
 
-class Seat extends DateTimeAssignable{
-    Seat(LocalDateTime utcSubmitted) {
-        super(utcSubmitted);
+import java.time.LocalDate;
+
+/**
+ * Represents a seat in the election.
+ * @author Maartje Kok
+ */
+public class Seat extends DateTimeAssignable{
+    /**
+     * Constructor method of the class. Initiates fields.
+     * @param submittedDate  the LocalDateTime of when the seat was submitted/created.
+     */
+    public Seat(LocalDate submittedDate) {
+        super(submittedDate);
     }
 }

@@ -1,13 +1,29 @@
-import java.time.LocalDateTime;
+package app;
 
+import java.time.LocalDate;
+
+/**
+ * Abstract class that represents an assignable (vote or seat) that keeps track of the date when it was created.
+ */
 public abstract class DateTimeAssignable {
-    private LocalDateTime submittedDateTime;
+    /**
+     * The date the assignable was created.
+     */
+    private LocalDate submittedDate;
 
-    DateTimeAssignable(LocalDateTime submittedDateTime){
-        this.submittedDateTime = submittedDateTime;
+    /**
+     * Constructor method of the class. Initiates fields.
+     * @param submittedDate the date the assignable was created.
+     */
+    DateTimeAssignable(LocalDate submittedDate){
+        this.submittedDate = submittedDate;
     }
 
-    public LocalDateTime getSubmittedDateTime() {
-        return submittedDateTime;
+    /**
+     * Gets the date the assignable was created.
+     * @return  the date the assignable was created.
+     */
+    public LocalDate getSubmittedDate() {
+        return submittedDate;
     }
 }
