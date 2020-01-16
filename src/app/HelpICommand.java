@@ -1,4 +1,13 @@
+package app;
+
+/**
+ * Class that represents the "help" command.
+ * @author Maartje Kok
+ */
 public class HelpICommand implements ICommand {
+    /**
+     * Executes the command. In this case it prints a list of all possible commands.
+     */
     public void execute() {
         System.out.println("Commands\n" +
                 "===========================================================\n" +

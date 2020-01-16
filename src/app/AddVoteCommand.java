@@ -1,18 +1,36 @@
+package app;
+
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Class that represents the "add vote" command.
+ * @author Maartje Kok
+ */
 public class AddVoteCommand extends AddCommand<HashMap<String, Integer>> {
-    AddVoteCommand(Scanner scanner, Election election) {
+    /**
+     * Constructor method of the class. Initiates fields.
+     * @param scanner   the scanner that is being used to read user input.
+     * @param election  the election in which the command has to be executed.
+     */
+    public AddVoteCommand(Scanner scanner, Election election) {
         super(scanner, election);
     }
 
-    HashMap<String, Integer> ask() {
+    /**
+     * Asks the user for information.
+     * @return  the information the user has provided.
+     */
+    public HashMap<String, Integer> ask() {
         HashMap<String, Integer> answers = new HashMap<>();
         answers.put("listNr", askListNr());
         answers.put("amountOfVotes", askAmountOfVotes());
         return answers;
     }
 
+    /**
+     * Executes the command. In this case it adds an amount of votes to a party.
+     */
     public void execute() {
         HashMap<String, Integer> answers = ask();
         int listNr = answers.get("listNr");
@@ -21,6 +39,10 @@ public class AddVoteCommand extends AddCommand<HashMap<String, Integer>> {
         System.out.println("The votes have been successfully added to the party.");
     }
 
+    /**
+     * Asks the user for the list number of the party the votes have to be added to.
+     * @return  the list number of the party the votes have to be added to.
+     */
     private int askListNr(){
         ListPartiesICommand listParties = new ListPartiesICommand(election);
         listParties.execute();
@@ -46,6 +68,10 @@ public class AddVoteCommand extends AddCommand<HashMap<String, Integer>> {
         return listNr;
     }
 
+    /**
+     * Asks the user for the amount of votes that have to be added to the party.
+     * @return  the amount of votes that have to be added to the party.
+     */
     private int askAmountOfVotes(){
         boolean go = true;
         int votes = 0;
