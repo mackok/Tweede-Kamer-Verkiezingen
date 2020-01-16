@@ -43,8 +43,8 @@ public class InteractionHandler {
         commands.put("help", new HelpICommand());
         commands.put("add party", new AddPartyCommand(scanner, election));
         commands.put("add votes", new AddVoteCommand(scanner, election));
-        commands.put("distribute seats", new DistributeSeatsCommand(election));
-        commands.put("parties", new ListPartiesCommand(election));
+        commands.put("distribute seats", new DistributeSeatsICommand(election));
+        commands.put("parties", new ListPartiesICommand(election));
 
         doneAfter.add("distribute seats");
         doneAfter.add("quit");

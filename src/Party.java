@@ -6,7 +6,7 @@ public class Party {
     private HashSet<Vote> votes;
     private HashSet<Seat> seats;
 
-    public Party(int listNumber, String name){
+    Party(int listNumber, String name){
         this.listNumber = listNumber;
         this.name = name;
         votes = new HashSet<>();
@@ -35,5 +35,9 @@ public class Party {
 
     public void addSeat(Seat seat){
         seats.add(seat);
+    }
+
+    public String toString(){
+        return "List Number: " + listNumber + "\nName: " + name + "\nVotes: " + getAmountOfVotes() + "\nSeats: " + getAmountOfSeats();
     }
 }

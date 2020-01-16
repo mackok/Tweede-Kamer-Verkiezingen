@@ -1,7 +1,7 @@
-public class ListPartiesCommand implements ICommand {
+public class ListPartiesICommand implements ICommand {
     private Election election;
 
-    ListPartiesCommand(Election election){
+    ListPartiesICommand(Election election){
         this.election = election;
     }
 
@@ -12,10 +12,7 @@ public class ListPartiesCommand implements ICommand {
         }
         else{
             for(Party party : election.getParties()){
-                System.out.println("List Number: " + party.getListNumber() + "\n" +
-                        "Name: " + party.getName() + "\n" +
-                        "Votes: " + election.getNumberOfPartyVotes(party) + "\n" +
-                        "Seats: " + election.getNumberOfPartySeats(party));
+                System.out.println(party.toString());
                 System.out.println("-----------------------------------------------------------");
             }
         }

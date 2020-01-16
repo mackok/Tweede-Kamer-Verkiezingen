@@ -1,13 +1,13 @@
-public class DistributeSeatsCommand implements ICommand {
+public class DistributeSeatsICommand implements ICommand {
     private Election election;
 
-    DistributeSeatsCommand(Election election){
+    DistributeSeatsICommand(Election election){
         this.election = election;
     }
     public void execute() {
         election.distributeSeats();
         System.out.println("The seats have been successfully distributed.");
-        ListPartiesCommand listParties = new ListPartiesCommand(election);
+        ListPartiesICommand listParties = new ListPartiesICommand(election);
         listParties.execute();
     }
 }

@@ -22,7 +22,7 @@ public class AddVoteCommand extends ResponseCommand<HashMap<String, Integer>> {
     }
 
     private int askListNr(){
-        ListPartiesCommand listParties = new ListPartiesCommand(election);
+        ListPartiesICommand listParties = new ListPartiesICommand(election);
         listParties.execute();
         boolean go = true;
         int listNr = 0;
